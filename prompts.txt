@@ -1,0 +1,7 @@
+2026-07-30T~22:05Z [approx] | Created CLAUDE.md with prompt logging instructions and initialized this prompts.txt log file.
+2026-07-30T~22:05Z [approx] | User ran `cat CLAUDE.md` and `cat prompts.txt` — read and displayed both files.
+2026-07-30T22:05:35Z | User ran `date -u +"%Y-%m-%dT%H:%M:%SZ"` — executed and returned current UTC timestamp.
+2026-07-30T~22:06Z [approx] | User ran `cat prompts.txt` — read and displayed current log contents.
+2026-07-30T22:08:27Z | User flagged incorrect timestamps in prompts.txt — corrected entries; will now run `date -u` before every log entry.
+2026-07-30T22:09:51Z | User confirmed UTC timestamps are correct (22:09Z = 16:09 CST). No changes needed.
+2026-07-30T22:15:03Z | Created folder structure: collections/, environments/, schemas/, docs/, scripts/, .github/workflows/. Created docs/assumptions.md, docs/test-strategy.md, docs/known-limitations.md with placeholder content.

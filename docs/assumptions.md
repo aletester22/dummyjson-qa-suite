@@ -1,0 +1,3 @@
+# Assumptions
+
+pendiente de completar
