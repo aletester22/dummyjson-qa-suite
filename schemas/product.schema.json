@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/aletester22/dummyjson-qa-suite/schemas/product.schema.json",
+  "title": "DummyJSON Product",
+  "description": "Shape of a single product returned by GET /products/{id}",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "description",
+    "category",
+    "price",
+    "discountPercentage",
+    "rating",
+    "stock",
+    "tags",
+    "sku",
+    "weight",
+    "dimensions",
+    "warrantyInformation",
+    "shippingInformation",
+    "availabilityStatus",
+    "reviews",
+    "returnPolicy",
+    "minimumOrderQuantity",
+    "meta",
+    "images",
+    "thumbnail"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id":                  { "type": "integer", "minimum": 1 },
+    "title":               { "type": "string", "minLength": 1 },
+    "description":         { "type": "string", "minLength": 1 },
+    "category":            { "type": "string", "minLength": 1 },
+    "price":               { "type": "number", "exclusiveMinimum": 0 },
+    "discountPercentage":  { "type": "number", "minimum": 0, "maximum": 100 },
+    "rating":              { "type": "number", "minimum": 0, "maximum": 5 },
+    "stock":               { "type": "integer", "minimum": 0 },
+    "tags":                { "type": "array", "items": { "type": "string" } },
+    "brand":               { "type": "string" },
+    "sku":                 { "type": "string", "minLength": 1 },
+    "weight":              { "type": "number" },
+    "dimensions": {
+      "type": "object",
+      "required": ["width", "height", "depth"],
+      "additionalProperties": false,
+      "properties": {
+        "width":  { "type": "number" },
+        "height": { "type": "number" },
+        "depth":  { "type": "number" }
+      }
+    },
+    "warrantyInformation":  { "type": "string" },
+    "shippingInformation":  { "type": "string" },
+    "availabilityStatus":   { "type": "string" },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rating", "comment", "date", "reviewerName", "reviewerEmail"],
+        "additionalProperties": true,
+        "properties": {
+          "rating":        { "type": "integer", "minimum": 1, "maximum": 5 },
+          "comment":       { "type": "string" },
+          "date":          { "type": "string", "format": "date-time" },
+          "reviewerName":  { "type": "string" },
+          "reviewerEmail": { "type": "string", "format": "email" }
+        }
+      }
+    },
+    "returnPolicy":         { "type": "string" },
+    "minimumOrderQuantity": { "type": "integer", "minimum": 1 },
+    "meta": {
+      "type": "object",
+      "required": ["createdAt", "updatedAt", "barcode", "qrCode"],
+      "additionalProperties": true,
+      "properties": {
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "barcode":   { "type": "string" },
+        "qrCode":    { "type": "string", "format": "uri" }
+      }
+    },
+    "images":    { "type": "array", "minItems": 1, "items": { "type": "string", "format": "uri" } },
+    "thumbnail": { "type": "string", "format": "uri" }
+  }
+}
