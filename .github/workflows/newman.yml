@@ -1,0 +1,42 @@
+name: Newman API Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  newman:
+    name: Run Postman Collection
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Newman
+        run: |
+          newman run collections/dummyjson-qa.postman_collection.json \
+            --environment environments/dev.postman_environment.json \
+            --reporters cli,json \
+            --reporter-json-export results.json \
+            --suppress-exit-code
+
+      - name: Check for unexpected failures
+        run: node scripts/check-results.js
+
+      - name: Upload results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-results
+          path: results.json
