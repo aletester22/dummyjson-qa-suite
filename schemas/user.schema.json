@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/aletester22/dummyjson-qa-suite/schemas/user.schema.json",
+  "title": "DummyJSON User",
+  "description": "Shape of the authenticated user returned by GET /auth/me",
+  "type": "object",
+  "required": [
+    "id",
+    "firstName",
+    "lastName",
+    "age",
+    "gender",
+    "email",
+    "phone",
+    "username",
+    "birthDate",
+    "image",
+    "bloodGroup",
+    "height",
+    "weight",
+    "eyeColor",
+    "hair",
+    "address",
+    "role"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id":        { "type": "integer", "minimum": 1 },
+    "firstName": { "type": "string", "minLength": 1 },
+    "lastName":  { "type": "string", "minLength": 1 },
+    "maidenName":{ "type": "string" },
+    "age":       { "type": "integer", "minimum": 0 },
+    "gender":    { "type": "string", "enum": ["male", "female", "other"] },
+    "email":     { "type": "string", "format": "email" },
+    "phone":     { "type": "string" },
+    "username":  { "type": "string", "minLength": 1 },
+    "password":  { "type": "string" },
+    "birthDate": { "type": "string" },
+    "image":     { "type": "string", "format": "uri" },
+    "bloodGroup":{ "type": "string" },
+    "height":    { "type": "number" },
+    "weight":    { "type": "number" },
+    "eyeColor":  { "type": "string" },
+    "hair": {
+      "type": "object",
+      "required": ["color", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "color": { "type": "string" },
+        "type":  { "type": "string" }
+      }
+    },
+    "ip":         { "type": "string" },
+    "macAddress": { "type": "string" },
+    "university": { "type": "string" },
+    "address": {
+      "type": "object",
+      "required": ["address", "city", "state", "postalCode", "country"],
+      "additionalProperties": true,
+      "properties": {
+        "address":    { "type": "string" },
+        "city":       { "type": "string" },
+        "state":      { "type": "string" },
+        "stateCode":  { "type": "string" },
+        "postalCode": { "type": "string" },
+        "country":    { "type": "string" },
+        "coordinates": {
+          "type": "object",
+          "required": ["lat", "lng"],
+          "additionalProperties": false,
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" }
+          }
+        }
+      }
+    },
+    "bank": {
+      "type": "object",
+      "required": ["cardExpire", "cardNumber", "cardType", "currency", "iban"],
+      "additionalProperties": false,
+      "properties": {
+        "cardExpire": { "type": "string" },
+        "cardNumber": { "type": "string" },
+        "cardType":   { "type": "string" },
+        "currency":   { "type": "string" },
+        "iban":       { "type": "string" }
+      }
+    },
+    "company": {
+      "type": "object",
+      "required": ["department", "name", "title"],
+      "additionalProperties": true,
+      "properties": {
+        "department": { "type": "string" },
+        "name":       { "type": "string" },
+        "title":      { "type": "string" }
+      }
+    },
+    "ein":       { "type": "string" },
+    "ssn":       { "type": "string" },
+    "userAgent": { "type": "string" },
+    "crypto": {
+      "type": "object",
+      "required": ["coin", "wallet", "network"],
+      "additionalProperties": false,
+      "properties": {
+        "coin":    { "type": "string" },
+        "wallet":  { "type": "string" },
+        "network": { "type": "string" }
+      }
+    },
+    "role": { "type": "string", "enum": ["admin", "moderator", "user"] }
+  }
+}
