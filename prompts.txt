@@ -5,3 +5,16 @@
 2026-07-30T22:08:27Z | User flagged incorrect timestamps in prompts.txt — corrected entries; will now run `date -u` before every log entry.
 2026-07-30T22:09:51Z | User confirmed UTC timestamps are correct (22:09Z = 16:09 CST). No changes needed.
 2026-07-30T22:15:03Z | Created folder structure: collections/, environments/, schemas/, docs/, scripts/, .github/workflows/. Created docs/assumptions.md, docs/test-strategy.md, docs/known-limitations.md with placeholder content.
+2026-07-30T22:23:24Z | User ran git add/commit/push. Committed CLAUDE.md, prompts.txt, docs/*.md. Fixed auth (gh auth login + gh auth setup-git) and pushed to aletester22/dummyjson-qa-suite main.
+2026-07-30T22:26:34Z | Added "Collaboration Rules" section to CLAUDE.md with Justification Required and Push Back When Needed rules.
+2026-07-30T22:29:10Z | Replaced "Justification Required" subsection in CLAUDE.md with "Reasoning Comes From the User".
+2026-07-30T22:31:35Z | Created environments/dev.postman_environment.json with baseUrl, username, password (secret), authToken (secret), refreshToken (secret).
+2026-07-30T22:33:16Z | Discussion: username stays default (not sensitive alone). Identified gap: authToken/refreshToken empty at start — pending collection-level pre-request script to auto-login when token is missing.
+2026-07-30T22:35:43Z | Created collections/dummyjson-qa.postman_collection.json with 5 folders and collection-level pre-request auto-login script. Flagged gap: expired token not handled (only empty token check).
+2026-07-30T22:39:18Z | Added collection-level post-response (test) script: clears authToken on 401 only when body message indicates expired/invalid token, avoiding loop on bad credentials 401.
+2026-07-30T22:45:31Z | Built all 7 requests for 01_Authentication: login valid/invalid/missing-fields, get-me valid/no-token, refresh valid/invalid.
+2026-07-30T22:47:37Z | Added request 08 to 01_Authentication: Get current user with tampered JWT — pre-request script alters one payload char, validates 401 response, cleans up variable after.
+2026-07-30T23:50:10Z | Built all 9 requests for 02_Products_CRUD: get-all, get-by-id valid/404, create, PUT, PATCH, delete, create-with-negative-price (business risk), PUT-cannot-change-id.
+2026-07-31T00:01:43Z | Built all 13 requests for 03_Search_Filtering_Pagination: pagination p1/p2, search found/no-results, filter by category, sort asc/desc, select fields, injection/emoji, non-existent category, limit=0, skip=99999, limit=-5&skip=abc.
+2026-07-31T00:12:46Z | Built all 14 requests for 04_Cart_Business_Logic: get cart, total math, discounts, totalProducts/totalQuantity, carts by user, add/update/delete, qty=0, qty negative, decimal precision, duplicate product id, empty cart, invalid userId.
+2026-07-31T00:17:36Z | Built all 9 requests for 05_Error_Handling_Resilience: wrong method, malformed JSON, missing Content-Type, nonexistent endpoint, string-as-number, long string, response Content-Type header, SQL injection in path, empty required field.
