@@ -22,3 +22,4 @@
 2026-07-31T01:23:10Z | Created .github/workflows/newman.yml and scripts/check-results.js. Workflow uses --suppress-exit-code + JSON reporter; check-results.js filters expected failures via allowlist, exits 1 only on unexpected failures. Local dry-run confirmed: build OK with 4 known failures excluded.
 2026-07-31T04:23:39Z | Created schemas/product.schema.json (JSON Schema draft-07). Added AJV contract test inline in 02_Products_CRUD/02 - Get product by ID valid. Test passes locally.
 2026-07-31T04:29:41Z | Created schemas/cart.schema.json and schemas/user.schema.json. Added AJV contract tests inline in 04_Cart_Business_Logic/01 and 01_Authentication/04. All 3 contract tests pass.
+2026-07-31T04:36:03Z | Filled docs/test-strategy.md (scope, test types, auth strategy, CI, running locally) and docs/assumptions.md (API behavior, credentials, schema contracts, test design, CI).
