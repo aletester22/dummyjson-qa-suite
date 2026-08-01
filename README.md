@@ -52,6 +52,16 @@ newman run collections/dummyjson-qa.postman_collection.json \
 node scripts/check-results.js
 ```
 
+```bash
+# Visual HTML report (requires newman-reporter-htmlextra)
+newman run collections/dummyjson-qa.postman_collection.json \
+  --environment environments/dev.postman_environment.json \
+  --reporters cli,htmlextra \
+  --reporter-htmlextra-export reports/newman-report.html
+```
+
+Opens a self-contained HTML file in `reports/` with request/response details, test results, and a summary dashboard. The `reports/` folder is gitignored — the file is a local artifact only.
+
 The reason the CI command works the way it does — suppressing Newman's exit code and evaluating results separately — comes down to a few deliberate design choices.
 
 ---
