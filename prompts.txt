@@ -24,3 +24,4 @@
 2026-07-31T04:29:41Z | Created schemas/cart.schema.json and schemas/user.schema.json. Added AJV contract tests inline in 04_Cart_Business_Logic/01 and 01_Authentication/04. All 3 contract tests pass.
 2026-07-31T04:36:03Z | Filled docs/test-strategy.md (scope, test types, auth strategy, CI, running locally) and docs/assumptions.md (API behavior, credentials, schema contracts, test design, CI).
 2026-07-31T05:22:56Z | Rewrote README.md with narrative flow and transitions between sections. Corrected finding IDs to F-04/F-06 (aligned with known-limitations.md). Confirmed tables use markdown pipe syntax. Confirmed model ID claude-sonnet-4-6.
+2026-08-01T17:10:49Z | Installed newman-reporter-htmlextra as dev dependency. Added HTML report command to README. Added reports/ and .DS_Store to .gitignore. Created docs/test-cases.md with all 53 requests extracted directly from collection JSON, organized by folder with validation summary per request.
